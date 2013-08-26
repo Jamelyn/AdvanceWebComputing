@@ -1,0 +1,128 @@
+body{
+	background-image: url(IMAGES/b.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	overflow: auto;
+}
+
+#button{
+	margin-top: 5px;
+	background-image: url('IMAGES/button1.png');
+	background-repeat: no-repeat;
+	background-color: transparent;
+	vertical-align: middle;
+	text-align:center;
+	padding-top: 20px;
+	border-style: none;
+	height: 78px;
+	width:113px;
+	font-family: Berlin Sans FB;
+	font-size: 13pt;
+	color: White;
+}
+
+#button:hover{
+	background-image: url('IMAGES/button2.png');
+	cursor: pointer;
+}
+
+#txtTitle{
+	background:; gray;
+	vertical-align: middle;
+	height:60px;
+	width: 350px;
+	border-radius: 7px;
+	border-style: none;
+}
+
+input:focus, textarea:focus {
+	outline: none !important;
+}
+
+#form{
+	vertical-align: middle;         
+	width: 485px;
+	height: 90px;
+	padding: 5px;
+	padding-left: 15px;
+	margin: 50px auto 50px;
+	overflow: hidden;
+	box-shadow: 0 100px 150px rgba(0,0,0,.8) inset, 0 1px 0 rgba(255,255,255,.2);
+}
+
+#form input {
+    padding: 10px;
+    float: left;    
+    font: 18pt 'Berlin Sans FB', 'trebuchet MS', 'Tahoma';
+    border: 0;
+    background: lightyellow;
+    margin-top: 5px;
+}
+
+#form input:focus {
+    outline: 0;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+
+h2{
+	font-family: Arial;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: 0 0 0.8em black, 0 0 0.8em black, 0 0 0.8em black
+}
+
+.movie_container{
+	margin: 50px 70px;
+	background: rgba(0, 0, 255, .2);
+	border-radius: 10px;
+	border: 2px double black;
+	padding-top: 10px;
+	padding-right: 50px;
+	padding-left: 50px;
+	padding-bottom: 50px;
+	color: white;
+}
+
+p{
+	float: right;
+	width: 80%;
+}
+
+#movie_count{
+	margin: 10px 70px;
+	text-align: center;
+	font-family: Aharoni;
+	font-size: 15pt;
+	color: white;
+	text-shadow: 0 0 0.8em black, 0 0 0.8em black, 0 0 0.8em black
+}
+
+#description{
+	font-family: Century Gothic;
+	font-size: 10pt;
+	text-shadow: 0 0 0.8em black, 0 0 0.8em black, 0 0 0.8em black
+}
+
+
+b{
+	font-family: Arial;
+	font-size: 12pt;
+	text-shadow: 0 0 0.8em black, 0 0 0.8em black, 0 0 0.8em black
+}
+
+img{
+	float:left;
+	height: 250px;
+	width:200px;
+	border: 2px solid white;
+	margin-right: 20px;
+	margin-bottom: 5px;
+}
+
+span{
+	font-weight: bold;
+	font-size: 40pt;
+	color: red;
+	vertical-align: middle;
+}
