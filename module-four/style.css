@@ -1,0 +1,59 @@
+.main {
+    width: 600px;
+    margin: auto;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-family: AR BERKLEY;
+    font-size: 20pt;
+}
+
+.container
+    {
+        text-align: center;
+        font-family: Arial;
+        margin: 10px;
+    }
+
+#todo
+{
+    width: 49%;
+    float: left;
+    background-color: lightblue;
+    border: 1px dashed darkblue;
+
+}
+#done
+{
+    width: 49%;
+    float: right;
+    background-color: lightpink;
+    border: 1px dashed red;
+}
+
+
+#todo-list {
+    list-style: none;
+    width: auto;
+
+}
+.todo-item {
+    border: 1px solid gray;
+    height: 20px;
+    margin-top: 10px;
+    padding-right: 10px;
+    margin-right: 40px;
+
+}
+#todo-list .complete {
+    float: right;
+    width: auto;
+}
+#done-list
+{
+    list-style: none;
+    width: auto;
+    text-transform: uppercase;
+    font-weight: bold;
+}

@@ -1,0 +1,282 @@
+<html>
+<head>
+    <title>My first Web App</title>
+    <link rel=stylesheet href="style.css">
+</head>
+<body>
+    <div class='main'>TODO LIST
+    </div>
+    
+    <div class="container">
+        <div id="todo">    
+           	<input id='txtbox' type='text' value="What needs to be done:" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
+            <a href="#" onclick='onClickToggle();'><span id="mark">Mark all</span> when completed</a>
+                   | <a href="#" onclick='onClickRemoveDone()'>Remove all done tasks</a>
+			<ul id='todo-list'>
+			
+            </ul>
+        </div>
+		<div>
+			<ul id='done-list'>
+			
+			</ul>
+		</div>
+        <div id="pending">
+            Completed tasks/Total number of task: <span id="numberOfDone">0</span> OUT OF <span id="totalNumber">0</span>
+        </div>
+    </div>
+
+    <script>
+        var txtBoxEl = document.getElementById('txtbox');
+        var todoListEl = document.getElementById('todo-list');
+        var doneListEl = document.getElementById('done-list');
+		var displayTaskDone = document.getElementById('numberOfDone');
+		var displayTotalTask = document.getElementById('totalNumber');
+		
+		var markUnmark = document.getElementById('mark');
+		
+        var allTask = []; // all task
+		var onGoingTask = []; // ongoing
+		var alreadyDone = []; // done
+		
+if (JSON.parse(localStorage.getItem('module5alltask')) != null) {
+			var storagearrayalltask = JSON.parse(localStorage.getItem('module5alltask'));
+			var storagearraytask = JSON.parse(localStorage.getItem('module5task'));
+			var storagearraydone = JSON.parse(localStorage.getItem('module5done'));
+			
+			for (var i = 0; i < storagearrayalltask.length; i++) {
+				if (storagearrayalltask.length == 1) {
+					allTask.push(storagearrayalltask[i]);
+				} else {
+					if (storagearrayalltask[i] == ',') {
+						if (i%2 != 1) {
+							allTask.push(storagearrayalltask[i]);
+						}
+					} else {
+						allTask.push(storagearrayalltask[i]);
+					}
+				}
+			}
+			
+			for (var i = 0; i < storagearraytask.length; i++) {
+				if (storagearraytask.length == 1) {
+					onGoingTask.push(storagearraytask[i]);
+				} else {
+					if (storagearraytask[i] == ',') {
+						if (i%2 != 1) {
+							onGoingTask.push(storagearraytask[i]);
+						}
+					} else {
+						onGoingTask.push(storagearraytask[i]);
+					}
+				}
+			}
+			
+			for (var i = 0; i < storagearraydone.length; i++) {
+				if (storagearraydone.length == 1) {
+					alreadyDone.push(storagearraydone[i]);
+				} else {
+					if (storagearraydone[i] == ',') {
+						if (i%2 != 1) {
+							alreadyDone.push(storagearraydone[i]);
+						}
+					} else {
+						alreadyDone.push(storagearraydone[i]);
+					}
+				}
+			}
+			
+			for (var i = 0; i < allTask.length; i++){
+				var itemEl = document.createElement('li');
+				var className = 'name';
+				for (var j = 0; j < alreadyDone.length; j++) {
+					if (allTask[i] == alreadyDone[j]) {
+						className = 'completed';
+					}
+				}
+				var listMarkup =
+				'<div class="todo-item">' +
+				'<input class = "chkb" type = "checkbox">' +
+				'<span class="' + className + '">' + allTask[i] + '</span>' +
+				'</div>';   
+				itemEl.innerHTML = listMarkup;
+				todoListEl.insertBefore(itemEl, todoListEl.childNodes[0]);
+				
+				var cbBtnEl = itemEl.getElementsByClassName('chkb')[0];
+				if (className == 'completed') {
+					cbBtnEl.checked = true;
+				}
+				cbBtnEl.onclick = onClickCheckbox;
+			}
+		}
+		
+		displayTaskDone.innerHTML = alreadyDone.length;
+		displayTotalTask.innerHTML = allTask.length;
+		
+        txtBoxEl.onkeydown = function(event){
+            if (event.keyCode == 13) {
+                onClickShow();
+            }
+        }
+
+        function inputFocus(i){
+    		if(i.value==i.defaultValue){
+    			i.value=""; i.style.color="#000";
+    		}
+		}
+				
+		function inputBlur(i){
+    		if(i.value==""){ 
+    			i.value=i.defaultValue; i.style.color="#888"; 
+    		}
+		}
+		
+        function onClickShow() {
+
+            if (txtbox.value == '') {
+                alert('Please input data.');
+            }
+
+            else {
+				var same = false;
+                for (var i = 0; i < allTask.length; i++) {
+                    if (allTask[i] == txtBoxEl.value) {
+                        same = true;
+                    }
+                }
+
+                if (same) {
+                    alert('Already in list.');
+                } else {             
+					var itemEl = document.createElement('li');
+					var listMarkup =
+					'<div class="todo-item">' +
+						'<input class = "chkb" type = "checkbox">' +
+						'<span class="name">' + txtBoxEl.value + '</span>' +
+				   '</div>';    
+					itemEl.innerHTML = listMarkup;
+					todoListEl.insertBefore(itemEl, todoListEl.childNodes[0]);
+					
+					allTask.push(txtBoxEl.value);
+					onGoingTask.push(txtBoxEl.value);
+					txtbox.value = '';
+					
+					displayTaskDone.innerHTML = alreadyDone.length;
+					displayTotalTask.innerHTML = allTask.length;
+					savetoLocalStorage();
+
+					var cbBtnEl = itemEl.getElementsByClassName('chkb')[0];
+					cbBtnEl.onclick = onClickCheckbox;
+                }
+            }
+        }
+
+        function onClickCheckbox(){
+            var cbBtnEl = event.target;
+			var liItem = cbBtnEl.parentNode; //div .parentNode = li
+			var cbBtnValueEl;
+			
+			if (cbBtnEl.checked) {
+				cbBtnValueEl = liItem.getElementsByClassName('name')[0];
+				for (var i = 0; i < onGoingTask.length; i++){
+					if (cbBtnValueEl.innerText == onGoingTask[i]){
+						alreadyDone.push(onGoingTask[i]);
+						onGoingTask.splice(i, 1);
+					}
+				}
+				cbBtnValueEl.className = 'completed';
+			} else {
+				cbBtnValueEl = liItem.getElementsByClassName('completed')[0];
+				for (var i = 0; i < alreadyDone.length; i++){
+					if (cbBtnValueEl.innerText == alreadyDone[i]){
+						onGoingTask.push(alreadyDone[i]);
+						alreadyDone.splice(i, 1);
+					}
+				}
+				cbBtnValueEl.className = 'name';
+			}
+			
+			displayTaskDone.innerHTML = alreadyDone.length;
+			savetoLocalStorage();
+        }
+
+        function onClickToggle(){
+            var chckCntr = 0;
+            for (var i = 0; i < allTask.length; i++) {
+                var cbEl = document.getElementsByClassName('chkb')[i];
+                
+                if (cbEl.checked) {
+                    chckCntr++;
+                };
+            }
+			
+            for (var i = 0; i < allTask.length; i++) {
+                var cbEl = document.getElementsByClassName('chkb')[i];
+            
+                if (chckCntr != allTask.length) {
+					if (!cbEl.checked) { //if not checked ..
+						var cbBtnValueEl = document.getElementsByClassName('name')[0];
+						cbBtnValueEl.className = 'completed';
+						for (var j = 0; j < onGoingTask.length; j++){
+							if (cbBtnValueEl.innerText == onGoingTask[j]){
+								alreadyDone.push(onGoingTask[j]);
+								onGoingTask.splice(j, 1);
+							}
+						}
+						markUnmark.innerHTML = 'Unmark all';
+					}
+                    cbEl.checked = true;
+                } else {
+					if (cbEl.checked) {
+						var cbBtnValueEl = document.getElementsByClassName('completed')[0];
+						cbBtnValueEl.className = 'name';
+						for (var j = 0; j < alreadyDone.length; j++){
+							if (cbBtnValueEl.innerText == alreadyDone[j]){
+								onGoingTask.push(alreadyDone[j]);
+								alreadyDone.splice(j, 1);
+							}
+						}
+						markUnmark.innerHTML = 'Mark all';
+					}
+                    cbEl.checked = false;
+                }
+            }
+			
+			displayTaskDone.innerHTML = alreadyDone.length;
+			savetoLocalStorage();
+        }
+
+        function onClickRemoveDone(){
+			var donelength = alreadyDone.length;
+			for(var i = 0; i < donelength; i++) {
+				for (var j = 0; j < allTask.length; j++) {
+					if (alreadyDone[i] == allTask[j]) {
+						allTask.splice(j, 1);
+					}
+				}
+			}
+			
+			for(var i = 0; i < donelength; i++) {
+				var liItem = document.getElementsByClassName('completed')[0].parentNode.parentNode;
+				liItem.remove();
+			}
+			
+			
+			for (var i = 0; i < donelength; i++) {
+				alreadyDone.splice(0, 1);
+			}
+			
+			displayTaskDone.innerHTML = alreadyDone.length;
+			displayTotalTask.innerHTML = allTask.length;
+			savetoLocalStorage();
+        }
+		
+		function savetoLocalStorage() {
+			localStorage.setItem("module5alltask", JSON.stringify(allTask));
+			localStorage.setItem("module5task", JSON.stringify(onGoingTask));
+			localStorage.setItem("module5done", JSON.stringify(alreadyDone));
+		}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+body
+{
+	background-image: url("IMG/bg.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+}
+h1,h2,h3,h4,h5,h6
+{
+	color: #c0c0c0;
+	font-family: Arial;
+}
+#head
+{
+	height: 100px;
+	text-align: center;
+	padding: 10px 10px;
+}
+
+.pic
+{
+	height: 250px;
+	width: 250px;
+	border: solid gray 5px;
+}
+
+#container
+{
+	width: 1333px;
+	height: 100%;
+}
+
+.member1, .member2
+{
+	width: 45%;
+	float: left;
+	text-align: center;
+	border: dashed gray 3px;
+	margin-left: 35px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+
+}
+.member2
+{
+	float: right;
+	margin-right: 35px;
+}
+p
+{
+	color: white;
+	text-align: center;
+	font-size: 12pt;
+	font-family: Arial
+}
+span
+{
+	font-style: italic;
+	color: white;
+}
+.hobbies
+{
+	text-align: center;
+	text-transform: uppercase;
+	font-family: cursive;
+	color: pink;
+
+
+}
+.favq
+{
+	font-style: italic;
+	font-weight: normal;
+}
+#poweron
+{
+	height: 70px;
+	width: 500px;
+}
+a{
+	text-decoration: none;
+	color: white;
+	font-family: arial;
+	font-weight: bolder;
+	font-size: 11pt;
+}
