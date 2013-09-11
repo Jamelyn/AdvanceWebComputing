@@ -1,61 +1,63 @@
 $(document).ready(function(){
-
-	$('#txtTitle').keypress(function(event) {
+	$('#movie_text').keypress(function(event) {
+		
 		var keycode = (event.keyCode ? event.keyCode : event.which);
 		if(keycode == '13') {
-			var movie_title =  $("#txtTitle").val();
-			searchMovies(movie_title);
+			var movie_title =  $("#movie_text").val();
 				if (txtTitle.value == ""){
 					alert("Please insert a Movie Title.");
 				}
-			$('#txtTitle').val('');
+				else{
+					alert(movie_title);
+				}
+			$('#movie_text').val('');
 		}
 	});
-	/*
-	var pageStatus = 1;
-
-	function Next(){
-		pageStatus + 1;
-	}
-
-	function Prev(){
-		pageStatus - 1;
-	}
-	*/
-	$("#button").click(function(){
-		var movie_title =  $("#txtTitle").val();
-		searchMovies(movie_title);
-	});
-	
-	function searchMovies(movie_title){
-		$('.main').replaceWith($('<div class="main"></div>'));
-		console.log(movie_title)
-		var server = 'http://api.rottentomatoes.com/api/public/v1.0/movies.json'
-		$.ajax({
-			url: server,
-			dataType: 'jsonp',
-			data:{
-				q: movie_title,
-				apiKey: 'hcrurhsttexasrgfm2y6yahm', page_limit: 50, page: 1
-			},
-			success:showMovies
-		});	
-	}
-
-	function showMovies(response){
-		
-		console.log('response', response);
-
-		var markup = "";
-		var movies = response.movies;
-		$('.main').append("<div id='movie_count'>--Showing <span>" + movies.length + "</span>  Movie results--</div>");
-		for(var i = 0; i < movies.length; i++){
-			var movie = movies[i];
-			var template = $('#tpl-movie').html();
-			var $template = Handlebars.compile(template);
-			markup = $template(data);
-			$('.main').append(markup);
-		}
-	}
 });
 
+	$("#boxOffice").click(function(){
+		//sendRequest('http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?');
+		alert("box_office");
+	});
+	
+	$("#upComing").click(function(){
+		//nfunction()Request('http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?');
+		alert("upComing");
+	});
+	
+	$("#inTheaters").click(function(){
+		//sendRequest('http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?');
+		alert("inTheaters");
+	});
+	
+	$("#openingMovies").click(function(){
+		//sendRequest('http://api.rottentomatoes.com/api/public/v1.0/lists/movies/opening.json?');	
+		alert("openingMovies");
+	});
+
+
+	function pagination(total_movies){
+		var total_movies;
+		var total_pages;
+		total_pages = total_movies / 50;
+		return total_pages;
+		//
+	};
+
+	function sendRequest(server_url, movie){
+		var server_url;
+		var movie;
+		$.ajax({
+			url: server_url,
+			dataType: "jsonp",
+			data: {
+				q: movie_title,
+				apiKey: 'hcrurhsttexasrgfm2y6yahm',
+				page_limit: 50
+			},
+			success: showMovies
+		});
+	};
+
+	function showMovies(response){
+	};
