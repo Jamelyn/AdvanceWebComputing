@@ -1,13 +1,15 @@
 $(document).ready(function() {
     var app = {};
     var url = '';
+	
+	url = 'http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?';
+	sendRequest(url);
 
 	$('#box_office').click(function(){
 		url = 'http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?';
 		sendRequest(url);
-		//alert(url);
 	});
-
+		
 	$('#in_theaters').click(function(){
 		url = 'http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?';
 		sendRequest(url);
@@ -27,7 +29,7 @@ $(document).ready(function() {
 	});
 
  	function sendRequest(url){
- 		
+ 	
 	 $.ajax({
 	        url: url,
 	        data: {
@@ -47,15 +49,17 @@ $(document).ready(function() {
 
     }
     function showBoxOffice(response) {
+    	$('ul.movie-list').replaceWith('<ul class="thumbnails movie-list"></ul>');
         app.movies = response.movies;
         var movie, template, $template, markup;
         for (var i = 0; i < app.movies.length; i++) {
                 movie = app.movies[i];
                 movie._index = i;
-                $('table tbody').append(getTemplate('tpl-box-office-item', movie));
+                $('ul.movie-list').append(getTemplate('tpl-box-office-item', movie));
         }
-        $('table tbody>tr').hover(function(ev) {
-            var data = $(ev.target).closest('tr').data();
+
+        $('div .caption').hover(function(ev) {
+            var data = $(ev.target).closest('li').data();
             var movie = app.movies[data.id];
             $('.movie-detail').html(getTemplate('tpl-movie-detail', movie));
         });

@@ -3,9 +3,10 @@
     <head>
         <title>Advance Movie Search</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-		<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -13,11 +14,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Movie Search</a>
+                    <a class="navbar-brand" href="#">Advance Movie Search</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
 						<li><a href="#" id="box_office">Box Office Movies</a></li>
 						<li><a href="#" id="in_theaters">In Theaters</a></li>
 						<li><a href="#" id="up_coming">Upcoming Movies</a></li>
@@ -31,51 +31,55 @@
             </div>
         </div> <!-- header div -->
 
-        <div class='container'>
-            <div class='row'>
-                <div class='col-md-4 movie-list'>
-                    <table class='table table-hover'>
-                        <thead>
-                            <tr>
-                                <th>Score</th>
-                                <th>Rating</th>
-                                <th>Title</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-                <div class='col-md-7 movie-detail'>
-                </div>
-            </div>
-        </div>
+        <div class="container">
+        	<div class='row'>
+	        	<ul class="thumbnails movie-list">
 
-        <script id="tpl-box-office-item" type="text/x-handlebars-template">
-            <tr data-id="{{_index}}">
-                <td>{{ratings.critics_score}}</td>
-                <td>{{mpaa_rating}}</td>
-                <td>{{title}}</td>
-            </tr>
-        </script>
-        <script id="tpl-movie-detail" type="text/x-handlebars-template">
-            <div class='well'>
-                <div class='row'>
-                    <div class='col-md-2'>
-                        <img src="{{posters.profile}}" class='img-thumbnail' alt="">
-                    </div>
-                    <div class='col-md-7'>
-                        <h1>{{title}} ({{year}})</h1>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-md-10'>
-                        <h4>Synopsis</h4>
-                        <blockquote>{{synopsis}}</blockquote>
-                    </div>
-                </div>
-            <div>
-        </script>
+	        	</ul>
+        	</div><!-- row movie list -->
+
+        	<div class='movie-detail col-md-7'>
+
+        	</div>
+
+	        <script id="tpl-box-office-item" type="text/x-handlebars-template">        	
+				<li class="span5">
+				    <div class="thumbnail well" data-id="{{_index}}">
+						<div class="row">
+						    <div class="col-md-2">
+						    	<img data-src='holder.js/300x200' src="{{posters.profile}}" class="img-thumbnail" alt=""/>
+						    </div>
+						   
+						    <div class='col-md-4 caption'>
+							    <h3>{{title}}</h3>
+							    <h4>{{year}}</h4>
+							    <span class="label label-info">Critics Consensus :</span>
+							     <p>{{critics_consensus}}</p>
+						    </div>
+					    </div>
+				    </div>
+				</li>
+			</script>
+
+			<script id="tpl-movie-detail" type="text/x-handlebars-template">
+	            <div class='well'>
+	                <div class='row'>
+	                    <div class='col-md-2'>
+	                        <img src="{{posters.profile}}" class='img-thumbnail' alt="">
+	                    </div>
+	                    <div class='col-md-7'>
+	                        <h1>{{title}} ({{year}})</h1>
+	                    </div>
+	                </div>
+	                <div class='row'>
+	                    <div class='col-md-10'>
+	                        <h4>Synopsis</h4>
+	                        <blockquote>{{synopsis}}</blockquote>
+	                    </div>
+	                </div>
+	            <div>
+        	</script>
+        </div>
 
         <script src="js/jquery.js"></script>
         <script src="js/handlebars.js"></script>
