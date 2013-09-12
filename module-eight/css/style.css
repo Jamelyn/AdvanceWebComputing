@@ -1,82 +1,13 @@
-.main {
-    width: 600px;
-    margin: auto;
-    font-family: sans-serif;
-    font-family: Arial Black;
-    font-size: 50pt;
-    text-align: center;
-    margin-bottom: 10px;
-    color: lightgray;
-    text-shadow: -1px -1px gray, -1px -1px gray;
+.headerContainer{
+    background-color: #ff1919;
+    height: 70px;
+    width:  100%;
+    position: fixed;
+    top: 0;
 }
 
-.container{
-    width:600px;
-    margin: auto;
-    font-family: Arial;
-    text-align: center;
-    border-radius: 5px;
-
-}
-
-#todo{
-	padding: 10px;
-}
-
-#txtbox{
-    width: 550px;
+#logo{
     height: 50px;
-    padding: 10px;
-    font-size: 20px;
-    font-style: italic;
-    color: gray;
-    margin-bottom: 5px;
-}
-
-#todo-list {
-    list-style: none;
-    margin: auto;
-    padding-left: 10px;
-}
-
-li{
-    text-align: left;
-}
-
-a{
-    text-decoration: none;
-    color: black;
-    font-size: 13px;
-}
-
-h3{
-    text-align: left;
-}
-
-#pending{
-    margin-top: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-    text-align: left;
-    padding: 5px;
-    font-size: 10pt;
-    text-align: center;
-}
-
-.todo-item {
-    height: 20px;
-    margin-top: 10px;
-}
-
-.completed{
-    text-decoration:line-through;
-    font: Arial, Helvetica, sans-serif;
-    color: gray;
-}
-
-#numberOfDone, #totalNumber{
-    
-    font-weight: bolder;
-    font-size: 15pt;
-    vertical-align: middle;
+    width:  51px;
+    position: fixed;
 }

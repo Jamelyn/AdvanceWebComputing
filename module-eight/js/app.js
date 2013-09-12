@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
 	$('#movie_text').keypress(function(event) {
 		
 		var keycode = (event.keyCode ? event.keyCode : event.which);
