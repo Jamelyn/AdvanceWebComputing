@@ -1,19 +1,7 @@
-<<<<<<< HEAD
-.headerContainer{
-    background-color: #ff1919;
-    height: 70px;
-    width:  100%;
-    position: fixed;
-    top: 0;
+li{
+    list-style:none;    
 }
 
-#logo{
-    height: 50px;
-    width:  51px;
-    position: fixed;
+.span5{
+    background-color:#ccc;
 }
-=======
-li{
-	list-style:none;	
-}
->>>>>>> b4ecc663bd4712a1c5ef602db05a3278245a7619

@@ -1,13 +1,23 @@
 body
 {
-	background-image: url("IMG/bg.jpg");
-	background-position: center;
-	background-repeat: no-repeat;
+	background-color: #d3d3d3;
 }
-h1,h2,h3,h4,h5,h6
+
+h2
 {
-	color: #c0c0c0;
+	color: blue;
 	font-family: Arial;
+	text-shadow: black 0.1em 0.1em 0.2em;
+	text-shadow: -1px 0 white, 0 1px white,
+      1px 0 white, 0 -1px white;
+}
+
+.member2 > h2{
+	color: red;
+}
+
+.member2 > .hobbies{
+	color: red;
 }
 #head
 {
@@ -20,49 +30,59 @@ h1,h2,h3,h4,h5,h6
 {
 	height: 250px;
 	width: 250px;
-	border: solid gray 5px;
+	border: double white 10px;
+	border-radius: 10px;
 }
 
 #container
 {
-	width: 1333px;
+	width: 100%;
 	height: 100%;
 }
 
 .member1, .member2
 {
-	width: 45%;
-	float: left;
+	width: 28%;
 	text-align: center;
-	border: dashed gray 3px;
-	margin-left: 35px;
+	border-radius: 10px;
 	padding-top: 40px;
 	padding-bottom: 40px;
-
+	margin-bottom: 50px;
 }
+
+.member1{
+	float: left;
+	margin-left: 290px;
+	background-color: #b2b2ff;
+}
+
 .member2
 {
 	float: right;
-	margin-right: 35px;
+	margin-right: 290px;
+	background-color: #ff7f7f;
 }
+
 p
 {
-	color: white;
+	color: black;
 	text-align: center;
 	font-size: 12pt;
 	font-family: Arial
 }
+
 span
 {
-	font-style: italic;
-	color: white;
+	color: black;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 .hobbies
 {
 	text-align: center;
 	text-transform: uppercase;
 	font-family: cursive;
-	color: pink;
+	color: blue;
 
 
 }
@@ -82,4 +102,14 @@ a{
 	font-family: arial;
 	font-weight: bolder;
 	font-size: 11pt;
+	vertical-align: middle;
+}
+
+.contact{
+	vertical-align: middle;
+}
+
+.about{
+	padding-left: 20px;
+	text-align: left;
 }
