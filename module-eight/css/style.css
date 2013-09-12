@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .headerContainer{
     background-color: #ff1919;
     height: 70px;
@@ -11,3 +12,8 @@
     width:  51px;
     position: fixed;
 }
+=======
+li{
+	list-style:none;	
+}
+>>>>>>> b4ecc663bd4712a1c5ef602db05a3278245a7619
