@@ -6,12 +6,10 @@ $(document).ready(function() {
 		var keycode = (event.keyCode ? event.keyCode : event.which);
 		if(keycode == '13') {
 			var movie_title =  $("#movie-text").val();
-			searchMovies(movie_title);
-				if (movie_title.value == ""){
-					alert("Please insert a Movie Title.");
+				if(movie_title == ""){
+					alert("Please insert a Movie Title.","");
 				}
 				else{
-
 					$.ajax({
 					url: 'http://api.rottentomatoes.com/api/public/v1.0/movies.json?',
 					dataType: 'jsonp',
@@ -23,20 +21,23 @@ $(document).ready(function() {
 
 					});
 					$('#movie-text').val('');
-
 				}
-
 		}
 	});
-
-	url = 'http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?';
+	
+	url = 'http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?';
 	sendRequest(url);
+
+	$('#home').click(function(){
+		url = 'http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?';
+		sendRequest(url);
+	});
 
 	$('#box_office').click(function(){
 		url = 'http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?';
 		sendRequest(url);
 	});
-
+		
 	$('#in_theaters').click(function(){
 		url = 'http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?';
 		sendRequest(url);
@@ -52,6 +53,11 @@ $(document).ready(function() {
 		sendRequest(url);
 	});
 
+	$('#about').click(function(){
+		window.open('http://jamelyn.github.io/AdvanceWebComputing/module-one')
+		return false;
+	});
+
  	function sendRequest(url){
  	
 	 $.ajax({
@@ -60,7 +66,7 @@ $(document).ready(function() {
 	            apiKey: 'hcrurhsttexasrgfm2y6yahm'
 	        },
 	        dataType: 'jsonp',
-	        success: showBoxOffice
+	        success: showMovies
   	  });
  	}
     
@@ -72,20 +78,34 @@ $(document).ready(function() {
         return markup;
 
     }
-    function showBoxOffice(response) {
-    	$('ul.movie-list').replaceWith('<ul class="thumbnails movie-list"></ul>');
+    function showMovies(response) {
+    	$('div.movie-list').replaceWith('<div class="thumbnails movie-list"></div>');
         app.movies = response.movies;
         var movie, template, $template, markup;
         for (var i = 0; i < app.movies.length; i++) {
                 movie = app.movies[i];
                 movie._index = i;
-                $('ul.movie-list').append(getTemplate('tpl-box-office-item', movie));
+                $('div.movie-list').append(getTemplate('tpl-items', movie));
         }
-
-        $('div .caption').hover(function(ev) {
-            var data = $(ev.target).closest('li').data();
+    
+        $('div.thumbnail-img').hover(function(ev) {
+            var data = $(ev.target).closest('div').data();
             var movie = app.movies[data.id];
-            $('.movie-detail').html(getTemplate('tpl-movie-detail', movie));
+            $('#' + data.id).popover({
+            	title: movie.title + ' -- ' + movie.year,
+            	offset: 10,
+            	placement: get_popover_placement,
+            	content: getTemplate('tpl-movie-detail', movie)
+            });
         });
     }
+
+    function get_popover_placement(pop, dom_el) {
+      var width = window.innerWidth;
+      if (width<800) return 'bottom';
+      var left_pos = $(dom_el).offset().left;
+      if (width - left_pos > 600) return 'right';
+      return 'left';
+    }
+
 });

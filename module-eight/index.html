@@ -2,93 +2,105 @@
 <html>
     <head>
         <title>Advance Movie Search</title>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen">
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-		<div class="navbar navbar-inverse navbar-static-top">
+		<div class="navbar navbar-inverse navbar-fixed-top topnav">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Advance Movie Search</a>
+                    <a class="navbar-brand" href="#" id="home">Advanced Movie Search</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
+                    	<li class="movie-search"><input type="text" placeholder='Search movie here..' id='movie-text'></li>
 						<li><a href="#" id="box_office">Box Office Movies</a></li>
 						<li><a href="#" id="in_theaters">In Theaters</a></li>
 						<li><a href="#" id="up_coming">Upcoming Movies</a></li>
 						<li><a href="#" id="opening_movies">Opening Movies</a></li>
-						<li><a href="">About++</a></li>
-					</ul>
-					<form class="form-search pull-right">
-						<input type="text" class="input-medium search-query" placeholder='Search movie here..' id='movie-text'>
-					</form>
+						<li><a href="#" id="about">About++</a></li>
+					</ul>				
+						
                 </div>
             </div>
-        </div> <!-- header div -->
+        </div> <!-- end header div -->
 
         <div class="container">
         	<div class='row'>
-	        	<ul class="thumbnails movie-list">
-
-	        	</ul>
-        	</div><!-- row movie list -->
-
-        	<div class='movie-detail col-md-7'>
-
+        		<div class='thumbnails movie-list'>
+ 		       <!-- template goes here -->
+ 		       	</div>
         	</div>
+		</div> <!-- container -->
 
-	        <script id="tpl-box-office-item" type="text/x-handlebars-template">        	
-				<li class="span5">
-				    <div class="thumbnail well" data-id="{{_index}}">
-						<div class="row">
-						    <div class="col-md-2">
-						    	<img data-src='holder.js/300x200' src="{{posters.profile}}" class="img-thumbnail" alt=""/>
-						    </div>
+		<div class="navbar navbar-fixed-bottom footer"> <!-- footer div -->
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand"> POWERON&trade; </a>
+				</div>
+				<div class="collapse navbar-collapse pull-right">
+					<ul class="nav navbar-nav">
+						<li><a href="#"> Copyright&copy;2013</a></li>
+					</ul>
+				</div>
+			</div>
+		</div> <!-- end footer div -->
 
-						    <div class='col-md-4 caption'>
-							    <h3>{{title}}</h3>
-							    <h4>{{year}}</h4>
-							    <span class="label label-info">Critics Consensus :</span>
-							    <p>{{critics_consensus}}</p>
-
-							    <div class='btn.group'>
-						    		<button class='btn btn-small btn-primary'> See more.. </button>
-						    	</div>
-						    </div>
-					    </div>
-				    </div>
-				</li>
+			
+	        <script id="tpl-items" type="text/x-handlebars-template">		
+				<div class='col-md-4 movie-list-details'>
+					<div data-id="{{_index}}" id="{{_index}}" class='thumbnail-img'>
+						<img src='{{posters.detailed}}' alt='' data-src="holder.js/300x200" id="moviePoster">
+						
+							<p class="text-center muted" id="movieTitle"><strong> {{ title }} ({{ year }}) </strong></p>
+							<span class="label label-info" id="rating"> {{ mpaa_rating }} </span>
+					</div>
+				</div>	
 			</script>
-<!--
-			<script id="tpl-movie-detail" type="text/x-handlebars-template">
-	            <div class='well'>
-	                <div class='row'>
-	                    <div class='col-md-2'>
-	                        <img src="{{posters.profile}}" class='img-thumbnail' alt="">
-	                    </div>
-	                    <div class='col-md-7'>
-	                        <h1>{{title}} ({{year}})</h1>
-	                    </div>
-	                </div>
-	                <div class='row'>
-	                    <div class='col-md-10'>
-	                        <h4>Synopsis</h4>
-	                        <blockquote>{{synopsis}}</blockquote>
-	                    </div>
-	                </div>
-	            <div>
-        	</script>
--->        
-        </div>
 
+			<script id="tpl-movie-detail" type="text/x-handlebars-template">
+		        <div class="panel panel-default">
+				    <div class="panel-heading">
+					    <h4 class="panel-title">
+					        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+						        <p class="label label-info"> Synopsis </p>
+					        </a>
+					    </h4>
+					</div>
+				</div>
+			    <div id="collapseOne" class="panel-collapse collapse in">
+				    <div class="panel-body">
+				        <blockquote>{{synopsis}}</blockquote>
+				    </div>
+				</div>
+
+				<div class="panel panel-default">
+				    <div class="panel-heading">
+					    <h4 class="panel-title">
+					        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+						        <p class="label label-danger"> Critics Consensus </p>
+					        </a>
+					    </h4>
+					</div>
+				</div
+			
+			    <div id="collapseOne" class="panel-collapse collapse in">
+				    <div class="panel-body">
+				        <blockquote> "{{ critics_consensus }}" <span class="label label-primary"> -- {{ ratings.critics_rating }} </span></blockquote>
+				    </div>
+				</div>
+        	</script>
+        	        
         <script src="js/jquery.js"></script>
         <script src="js/handlebars.js"></script>
         <script src="js/bootstrap.js"></script>
+		<script src="js/bootstrap-tooltip.js"></script>
+		<script src="js/bootstrap-popover.js"></script>
         <script src="js/app.js"></script>
     </body>
 </html>

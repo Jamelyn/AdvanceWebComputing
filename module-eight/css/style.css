@@ -1,7 +1,40 @@
 li{
-    list-style:none;    
+	list-style:none;
+	max-width: 500px;	
 }
 
-.span5{
-    background-color:#ccc;
+.topnav{
+	border: none;
 }
+
+.footer, .topnav{
+	background-color: black;
+	color: black;
+}
+
+#moviePoster{
+	padding-top: 10px;
+	height: 300px;
+	width: 250px;
+}
+
+#rating{
+	font-size: 15px;
+}
+
+#movieTitle{
+	padding-top: 5px;
+	font-size: 15px;
+}
+
+body{
+
+	padding-top: 20px;
+	padding-bottom: 70px;
+}
+
+.movie-list { padding: 90px; }
+.movie-list-details{ margin-bottom: 25px; text-align: center;}
+input#movie-text { padding: 0px 10px; border-radius: 20px;}
+li.movie-search { padding: 13px;}
+
