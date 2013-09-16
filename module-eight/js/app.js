@@ -107,5 +107,4 @@ $(document).ready(function() {
       if (width - left_pos > 600) return 'right';
       return 'left';
     }
-
 });

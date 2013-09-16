@@ -1,0 +1,93 @@
+<html>
+<head>
+  <title>Guest Book</title>
+  <style type="text/css">
+    #header{
+      background-color: #222222;
+      display: block;
+      height: 70px;
+      margin: 0px;
+      padding-top: 0px;
+    }
+
+    a{
+      text-decoration: none;
+      color: white;
+      text-align: right;
+      font-size: 15pt;
+      margin: 0px auto;
+    }
+
+    b{
+      text-transform: uppercase;
+    }
+
+    #submit{
+      text-align: right;
+      padding-top: 3px;
+      margin: 0px;
+    }
+    
+    input{
+      font-size: 15px;
+      color: black;
+      font-weight: bold;
+      padding: 5px;
+      height: 30px;
+      width: 70px;
+    }
+
+    h2{
+      padding-top: 30px;
+      text-align: center;
+      vertical-align: middle;
+
+    }
+
+    .comment{
+      list-style: none;
+      display: block;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 0px;
+    }
+
+    textarea{
+      width: 500px;
+      height: 150px;
+    }
+
+    table{
+      position: static;
+    }
+
+    body{
+      font-family: Arial; 
+    }
+
+
+  </style>
+
+</head>
+  <body>
+  <a id="header" href="{{ url }}">{{ url_linktext }}</a>
+    <table>
+      <tr><th colspan = "2"><h2>Sign the Guestbook!</h2></th></tr>
+
+      <form action="/sign" method="post">
+        <tr><th colspan="2"><textarea name="content"></textarea></th></tr>
+
+        <tr><td id="submit"><input type="submit" value="Submit"></td></tr>
+      </form>
+    </table>
+
+    <ul>
+      {% for greeting in greetings %} {% if greeting.author %}
+      <li class="comment"><b>{{ greeting.author }}</b> wrote: {% else %} </li>
+      <li class="comment">An anonymous person wrote:
+      {% endif %} {{ greeting.content|escape }} {% endfor %}</li>
+
+
+
+  </body>
+</html>
