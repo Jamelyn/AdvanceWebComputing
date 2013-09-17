@@ -11,14 +11,14 @@ jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 class Greeting(db.Model):
-  """Models an individual Guestbook entry with an author, content, and date."""
+ 
   author = db.StringProperty()
   content = db.StringProperty(multiline=True, indexed=False)
   date = db.DateTimeProperty(auto_now_add=True)
 
 
 def guestbook_key(guestbook_name=None):
-  """Constructs a Datastore key for a Guestbook entity with guestbook_name."""
+  
   return db.Key.from_path('Guestbook', guestbook_name or 'default_guestbook')
 
 
@@ -48,10 +48,7 @@ class MainPage(webapp2.RequestHandler):
 
 class Guestbook(webapp2.RequestHandler):
   def post(self):
-    # We set the same parent key on the 'Greeting' to ensure each greeting is in
-    # the same entity group. Queries across the single entity group will be
-    # consistent. However, the write rate to a single entity group should
-    # be limited to ~1/second.
+    
     guestbook_name = self.request.get('guestbook_name')
     greeting = Greeting(parent=guestbook_key(guestbook_name))
 
