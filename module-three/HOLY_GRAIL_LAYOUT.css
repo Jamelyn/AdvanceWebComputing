@@ -1,0 +1,315 @@
+body
+	{
+		background: -webkit-gradient(radial, center 50%, 0, center 50%, 700, from(gray), to(black));
+	}
+	
+#main
+	{
+		min-height: 800px;
+		margin: 0px;
+		padding: 0px;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-flow: row;
+				flex-flow: row;
+	}
+
+#main > article 
+	{
+		margin: 1% 1%;
+		background-image: url("IMAGES/article.png");
+		background-repeat: no-repeat;
+		opacity: 0.5;
+		background-size: 100% 100%;
+		-webkit-flex: 3 1 80%;
+				flex: 3 1 80%;
+		-webkit-order: 2;
+				order: 2;
+	}
+
+#summary
+	{
+		text-align: center;
+		margin-top: 150px;
+		font-family: Rockwell;
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+section
+	{
+		margin:  0% 10% 10% 10%;
+		font-size: 15px;
+		font-weight: bold;
+		text-decoration: none;
+		font-family: Segoe Script;
+		-webkit-flex-font-size: 100%;	
+		text-align: justify;
+	}
+
+#article_image
+	{
+		max-width: 100%;
+		margin-right: 5%;
+		margin-left: 5%;
+		padding-top: 0%;
+	}
+
+#main > nav 
+	{
+		margin: 1% 0%;
+		-webkit-flex: 1 1 20%;
+				flex: 1 1 20%;
+		-webkit-order: 1;
+				order: 1;
+		-webkit-flex-font-size: 100%;
+		font-family: Rockwell;
+		font-size: 18pt;
+		font-weight: bold;
+		text-align: center;
+		color: white;
+	}
+
+#HOME
+	{
+		background-image: url('IMAGES/HOME.png');
+		width: 100%;
+		height: 100px;
+		border-style: none;
+		font-family: Showcard Gothic;
+		font-size: 20pt;
+		color: black;
+	}
+
+#HOME:hover
+	{
+		font-size: 30pt;
+		cursor: pointer;
+	}
+
+#EPISODES
+	{
+		background-image: url('IMAGES/EPISODE.png');
+		width: 100%;
+		height: 100px;
+		border-style: none;
+		margin-top: 20px;
+		font-family: Showcard Gothic;
+		font-size: 20pt;
+		color: black;
+	}
+
+#EPISODES:hover
+	{
+		font-size: 30pt;
+		cursor: pointer;
+	}
+
+#CHAPTERS
+	{
+		background-image: url('IMAGES/CHAPTERS.png');
+		width: 100%;
+		height: 100px;
+		border-style: none;
+		margin-top: 30px;
+		font-family: Showcard Gothic;
+		font-size: 20pt;
+		color: black;
+	}
+
+#CHAPTERS:hover
+	{
+		font-size: 30pt;
+		cursor: pointer;
+	}
+
+#nav_image
+	{
+		display: flex;
+		display: -webkit-flex;
+		max-width: 100%;
+	}
+
+#main > aside 
+	{
+		margin: 1% 0%;
+		-webkit-flex: 1 1 20%;
+				flex: 1 1 20%;
+		-webkit-order: 3;
+				order: 3;
+		-webkit-flex-font-size: 100%;
+		font-family: Rockwell;
+		font-size: 18pt;
+		font-weight: bold;
+		text-align: center;
+		color: white;
+	}
+
+.logo
+	{
+		display: flex;
+		display: -webkit-flex;
+		width: 150px;
+		height:130px;
+		max-width: 100%;
+		margin-bottom: 20px;
+	}
+
+#zoro
+	{
+		border-style: none;
+		background-color: transparent;
+	}
+
+#zoro:hover
+	{
+		cursor: pointer;
+	}
+
+#ussop
+	{
+		border-style: none;
+		background-color: transparent;
+	}
+
+#ussop:hover
+	{
+		cursor: pointer;
+	}
+
+#nami
+	{
+		border-style: none;
+		background-color: transparent;
+	}
+
+#nami:hover
+	{
+		cursor: pointer;
+	}
+
+#sanji
+	{
+		border-style: none;
+		background-color: transparent;
+	}
+
+#sanji:hover
+	{
+		cursor: pointer;
+	}
+
+#luffy
+	{
+		border-style: none;
+		background-color: transparent;
+	}
+
+#luffy:hover
+	{
+		cursor: pointer;
+	}
+
+#chopper
+	{
+		border-style: none;
+		background-color: transparent;
+	}
+
+#chopper:hover
+	{
+		cursor: pointer;
+	}
+
+#robin
+	{
+		border-style: none;
+		background-color: transparent;
+	}
+
+#robin:hover
+	{
+		cursor: pointer;
+	}
+
+#franky
+	{
+		border-style: none;
+		background-color: transparent;
+	}
+
+#franky:hover
+	{
+		cursor: pointer;
+	}
+
+#brook
+	{
+		border-style: none;
+		background-color: transparent;
+	}
+
+#brook:hover
+	{
+		cursor: pointer;
+	}
+
+header
+	{
+		margin:1% 0%;
+		display: block;
+		display: -webkit-flex;
+		min-height: 200px;
+		max-height: 30px;
+	}
+
+footer 
+	{
+		display: block;
+		margin:1% 0%;
+		min-height: 50px;
+		text-align: center;
+		font-family: Segoe Script;
+		font-size: 10pt;
+		color: white;
+	}
+
+.footer_image
+	{
+		width: 60px;
+		height: 60px;
+	}
+
+#youtube
+	{
+		width: 100px;
+		height:60px;
+	}
+
+#gmail
+	{
+		width: 80px;
+		height: 60px;
+	}
+
+#links
+	{
+		text-decoration: none;
+	}
+
+
+@media all and (max-width: 640px){
+		#main, #page
+			{
+			-webkit-flex-flow: column;
+					flex-flow: column;
+			}
+
+		#main > nav, #main > article, #main >aside
+			{
+				-webkit-flex:0;
+				-webkit-order: 0;
+					order: 0;
+			}
+
+	}
