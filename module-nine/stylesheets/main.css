@@ -75,25 +75,10 @@
     }
 
     .container{
-      background-color: lightyellow;
-      height: 100%;
-      box-shadow: 0 0 10px 10px #ccc;     
+      height: 100%;     
       margin-left: 150px;
       margin-right: 150px;
-      padding-bottom: 50px; 
-    }
-
-    footer{
-      background-color: #222222;
-      height: 30px;
-      width: 100%;
-      position: fixed;
-      color: white;
-      bottom:0;
-      left:0;
-      font-size: 12px;
-      text-align: center;
-      padding-top: 12px;
+      padding-bottom: 70px;
     }
 
     #about{
